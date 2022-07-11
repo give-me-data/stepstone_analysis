@@ -20,6 +20,7 @@ cryptography==37.0.4
 cssselect==1.1.0
 cycler==0.11.0
 cymem==2.0.6
+de-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.3.0/de_core_news_sm-3.3.0-py3-none-any.whl
 debugpy==1.6.2
 decorator==5.1.1
 defusedxml==0.7.1
@@ -29,6 +30,7 @@ executing==0.8.3
 fake-useragent==0.1.11
 fastjsonschema==2.15.3
 fonttools==4.34.4
+gensim==4.2.0
 h11==0.13.0
 idna==3.3
 importlib-metadata==4.12.0
