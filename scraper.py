@@ -35,8 +35,8 @@ __config_dict =  {
 
 def attach_to_session(executor_url, session_id):
     '''
-    If a Session ID in the Selenium Grid is already allocated to a Session ID.
-    Takes a Session ID and return a Webdriver.
+    If a Webdriver in the Selenium Grid is already allocated to a Session ID.
+    Takes a Session ID and returns a Webdriver.
     '''
     original_execute = WebDriver.execute
     def new_command_execute(self, command, params=None):
@@ -87,8 +87,8 @@ class scraper:
 
     def _check_presence(self, x_path, time = 1):
         '''
-        Check if a X-Path-Element can be located at current page.
-        Takes a X-Path Element and return the Driver if the Element is present. 
+        Check if an X-Path-Element can be located at current page.
+        Takes an X-Path-Element and returns the Driver if the Element is present. 
         '''
         try: 
             #check if element is visible
@@ -100,7 +100,7 @@ class scraper:
 
     def _job_bot(self,url, session):
         '''
-        Takes a HTML Websession and return requested element from page.
+        Takes a HTML-Websession and returns requested element from page.
         '''
         try:
             #get random user agend
@@ -119,7 +119,7 @@ class scraper:
     
     def _save_data(self):
         '''
-        Safe the file to inline Json.
+        Safe the dataframe to inline Json.
         '''
         if __config_dict["prod"]:
             self.df.to_json(f"./{self.projekt_name}.json", orient="records", lines = True)
@@ -127,7 +127,7 @@ class scraper:
 
     def main_bot(self):
         '''
-        Navigate through Stepstone and scrape Job-Descriptions. 
+        Navigate through Stepstone and scrape job descriptions. 
         '''
         cookie_disclaimer = self._check_presence(x_path =  self.cookie_disclamer_xpath)
         if cookie_disclaimer:
