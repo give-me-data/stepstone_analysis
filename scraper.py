@@ -15,29 +15,28 @@ from fake_useragent import UserAgent
 from concurrent.futures import ThreadPoolExecutor
 from random import randint
 
-#http://127.0.0.1:4444/
-
 __config_dict =  {
-    "projekt_name":"full_stepstone_DS_crawl_1",
-    "hub_session" : False,
-    "max_pages": 5,
+    "projekt_name":"full_stepstone_DS_crawl",
+    "hub_session" : False, #Attach to current Selenium Grid Session by ID 
+    "max_pages": 380, 
     "job": "'Data Science'",
     "hub_url" : "http://127.0.0.1:4444/wd/hub",
     "url" : "https://www.stepstone.de/",
-    "search_x_path": "/html/body/div[2]/div[1]/div[3]/div/div/div/div/div[1]/div[1]/div[1]/div/div[2]/input",
-    "cookie_disclamer_xpath" :  "//div[@id = 'ccmgt_explicit_accept']",
+    "search_x_path": "/html/body/div[2]/div[1]/div[3]/div/div/div/div/div[1]/div[1]/div[1]/div/div[2]/input", 
+    "cookie_disclamer_xpath" : "//div[@id = 'ccmgt_explicit_accept']",
     "headline_xpath" : "//h2[@class='sc-pJurq hXakmZ']",
     "city_xpath" : "//li[@class='sc-qQMSE gzFHUw sc-pBzUF eUumVw']",
     "links_xpath" : "//a[@class='sc-pAZqv cyGFEN']",
     "text_xpath" : "//div[@itemprop='description']//p|//div[@itemprop='description']//b|//div[@itemprop='description']//li",
     "next_page_xpath" : '//a[@data-at="pagination-next"]',
-    "prod": False
+    "prod": False # If prod = True, content will saved to inline json
 }
 
 
 def attach_to_session(executor_url, session_id):
     '''
-    
+    If a Session ID in the Selenium Grid is already allocated to a Session ID.
+    Takes a Session ID and return a Webdriver.
     '''
     original_execute = WebDriver.execute
     def new_command_execute(self, command, params=None):
@@ -88,20 +87,20 @@ class scraper:
 
     def _check_presence(self, x_path, time = 1):
         '''
-
+        Check if a X-Path-Element can be located at current page.
+        Takes a X-Path Element and return the Driver if the Element is present. 
         '''
         try: 
             #check if element is visible
             good_driver = WebDriverWait(self.driver, time).until(EC.presence_of_element_located((By.XPATH, x_path)))
             return good_driver
         except TimeoutException as t:
-            print("Timeout")
             return False
 
 
     def _job_bot(self,url, session):
         '''
-        
+        Takes a HTML Websession and return requested element from page.
         '''
         try:
             #get random user agend
@@ -119,13 +118,16 @@ class scraper:
             return ""
     
     def _save_data(self):
+        '''
+        Safe the file to inline Json.
+        '''
         if __config_dict["prod"]:
             self.df.to_json(f"./{self.projekt_name}.json", orient="records", lines = True)
             print(f"          ---> Saved Data to: ./{self.projekt_name}.json")
 
     def main_bot(self):
         '''
-        
+        Navigate through Stepstone and scrape Job-Descriptions. 
         '''
         cookie_disclaimer = self._check_presence(x_path =  self.cookie_disclamer_xpath)
         if cookie_disclaimer:
@@ -161,7 +163,7 @@ class scraper:
         if not self.df.empty:
             self._save_data()
         else:
-            print("No Data Available")
+            print("No Data Available. Check your Config")
 
 
 if __name__ == "__main__":
