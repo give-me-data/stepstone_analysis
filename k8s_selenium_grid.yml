@@ -3,6 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: selenium
   name: selenium-hub
   labels:
     name: selenium-hub
@@ -23,6 +24,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: selenium
   name: selenium-hub-deployment
   labels:
     app: selenium-hub
@@ -68,6 +70,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
+  namespace: selenium
   name: selenium-ingress
   annotations:
     nginx.ingress.kubernetes.io: /$1
@@ -85,6 +88,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: selenium
   name: selenium-node-chrome
   labels:
     name: selenium-node-chrome
@@ -105,6 +109,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: selenium
   name: selenium-node-chrome-deployment
   labels:
     app: selenium-node-chrome
