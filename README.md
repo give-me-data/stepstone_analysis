@@ -4,7 +4,7 @@
 
 I shared some practical insights with [Prof. Dr. Dennis Klinkhammer](https://de.linkedin.com/in/dr-dennis-klinkhammer) and his Big Data and Business Analytics students at [FOM - University of Applied Sciences](https://www.fom.de/) regarding that specific question – and that’s my approach:
 
-Being a Data Scientist myself [myself](https://de.linkedin.com/in/rubenwienigk), I especially love the process of collecting and analyzing unstructured data and so I programmed a bot and collected over 5.400 job postings regarding the keyword "Data Science" on []() Stepstone. Using Natural Language Processing, I was able to extract some of the required skills (thanks to [Spacy](https://spacy.io/) and [SkillNer](https://github.com/AnasAito/SkillNER)). 
+Being a Data Scientist [myself](https://de.linkedin.com/in/rubenwienigk), I especially love the process of collecting and analyzing unstructured data and so I programmed a bot and collected over 5.400 job postings regarding the keyword "Data Science" on []() Stepstone. Using Natural Language Processing, I was able to extract some of the required skills (thanks to [Spacy](https://spacy.io/) and [SkillNer](https://github.com/AnasAito/SkillNER)). 
 
 **The results:** I found a bit of everthing. In Germany, Data Scientists seem to be broad generalists. It is particularly noticeable that Python is relevant in every 5th job ad, (followed by SQL in every 7th and subsequently R in every 9th). 
 
