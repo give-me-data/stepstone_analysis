@@ -93,5 +93,24 @@ __config_dict =  {
 python scraper.py
 ```
 
+## Results
+
+1. Top Cities
+   
+![Top Cities](./visuals/cities.png)
+
+2. Top Tech-Stack
+
+![Top Tech-Stack](./visuals/tech_skills.png)
+
+3. Top Skills
+
+![Top Skills](./visuals/skills.png)
+
+4. Top Benefits
+
+![Top Benefits](./visuals/benefits.png)
+
+
 ## Contributing
 Sharing is caring
